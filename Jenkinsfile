@@ -1,24 +1,25 @@
 pipeline {
     agent any
+
+    environment {
+        DIRECTORY_PATH = "/home/user/project"
+        TESTING_ENVIRONMENT = "Staging Server"
+    }
+
     stages {
         stage('Build') {
             steps {
-                sh 'echo "Compiling the code..."'
+                echo "Fetching code from ${DIRECTORY_PATH}"
             }
         }
         stage('Test') {
             steps {
-                sh 'echo "Running tests..."'
+                echo "Testing on ${TESTING_ENVIRONMENT}"
             }
         }
         stage('Deploy') {
             steps {
-                sh 'echo "Deploying to server..."'
-            }
-        }
-        stage('Cleanup'){
-            steps {
-                sh 'echo "Cleaning Up....."'
+                echo "Deploying..."
             }
         }
     }
