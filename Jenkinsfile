@@ -22,5 +22,11 @@ pipeline {
                 echo "Deploying..."
             }
         }
+        stage('Approval') {
+    steps {
+        echo "Waiting for approval..."
+        sleep 10
+            }
+        }    
     }
 }
